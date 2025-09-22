@@ -23,6 +23,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  z-index: 100;
 }
 
 .sidebar .foto {
@@ -87,6 +88,7 @@ body {
 main {
   flex: 1;
   padding: 40px;
+  margin-left: 280px;
 }
 
 /* Secciones */
@@ -135,4 +137,81 @@ body.dark .card {
 
 body.dark .card a {
   color: #90caf9;
+}
+
+/* Barra lateral fija */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  background-color: #222;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 100;
+}
+
+/* Mejor distribución y animación moderna/minimalista para el menú */
+.sidebar nav {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: stretch;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 0;
+}
+
+.sidebar ul li a {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 1.08rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.2s, background 0.2s, transform 0.18s;
+}
+
+/* Animación minimalista: subrayado animado y leve escala */
+.sidebar ul li a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 30%;
+  right: 30%;
+  bottom: 8px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  background: rgba(76,175,80,0.10);
+  color: var(--primary);
+  transform: scale(1.04);
+}
+
+.sidebar ul li a:hover::after,
+.sidebar ul li a:focus::after {
+  transform: scaleX(1);
 }
